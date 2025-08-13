@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Respostas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Olá, {{ nome }}!</h2>
+    <button onclick='window.location.href="{{ url_for("home") }}"'>Voltar</button>
+    <button onclick='window.location.href="{{ url_for("lista") }}"'>Ver lista respostas</button>
+    </div>
+</body>
+</html>
