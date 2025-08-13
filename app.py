@@ -15,7 +15,7 @@ def init_db():
         '''
         CREATE TABLE IF NOT EXISTS pessoa (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL
+            curso TEXT NOT NULL
         )
         '''
     )
@@ -33,24 +33,27 @@ def home():
 
 # Criar uma rota para o resposta.html funcionar
 
+
 @app.route("/resposta", methods=["POST"])
-def resposta():
-    nome = request.form['nome']
+def resposta(): 
+    curso = request.form['curso']
     connect = sqlite3.connect(db_name)
     c = connect.cursor()
-    c.execute("INSERT INTO pessoa (nome) VALUES (?)", (nome,))
+    c.execute("INSERT INTO pessoa (curso) VALUES (?)", (curso,))
     connect.commit()
     connect.close()
-    return render_template('resposta.html', nome=nome)
+    return render_template('resposta.html', curso=curso)
+
 
 @app.route('/lista')
 def lista():
     connect = sqlite3.connect(db_name)
     c = connect.cursor()
-    c.execute("SELECT id, nome FROM pessoa")
-    pessoas = c.fetchall()
+    c.execute("SELECT id, curso FROM pessoa")
+    cursos = c.fetchall()
     connect.close()
-    return render_template('lista.html', pessoas=pessoas)
+    return render_template('lista.html', cursos=cursos)
+
 
 @app.route('/deletar/<int:id>')
 def deletar(id):

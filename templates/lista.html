@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de nomes</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de cursos</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
     <div class="container">
-        <h2>Pessoas cadastradas</h2>
-        <ul>
-            {% for pessoa in pessoas %}
-                <li>{{ pessoa[1] }}</li>
-            {% endfor %}
-        </ul>
-        <a href="/">Voltar</a>
+      <h2>Cursos cadastrados</h2>
+      <ul>
+        {% for curso in cursos %}
+        <li>
+          {{ curso[1] }}
+          <a
+            href="{{ url_for('deletar', id=curso[0]) }}"
+            >Excluir</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+
+      <button onclick="window.location.href='{{ url_for('home') }}'">
+        Voltar
+      </button>
     </div>
-</body>
+  </body>
 </html>
