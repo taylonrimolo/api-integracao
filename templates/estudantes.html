@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Estudantes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Cadastro de quantidade de alunos por curso</h2>
+    <form method="POST">
+        <label for="curso_id">Selecione o curso:</label>
+        <select name="curso_id" id="curso_id" required>
+            {% for curso in cursos %}
+            <option value="{{ curso[0] }}">{{ curso[1] }}</option>
+            {% endfor %}
+        </select>
+        <label for="quantidade">Quantidade de alunos:</label>
+        <input type="number" name="quantidade" id="quantidade" required min="1">
+        <button type="submit">Cadastrar</button>
+    </form>
+    <br>
+    <button onclick="window.location.href='{{ url_for('lista_alunos') }}'">Ver lista de alunos</button>
+    <button onclick="window.location.href='{{ url_for('home') }}'">Voltar</button>
+</div>
+</body>
+</html>

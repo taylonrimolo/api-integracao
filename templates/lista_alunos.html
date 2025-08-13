@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Alunos por Curso</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Quantidade de alunos por curso</h2>
+    <table border="1" style="margin:auto; border-collapse: collapse;">
+        <tr>
+            <th>Curso</th>
+            <th>Quantidade de Alunos</th>
+        </tr>
+        {% for curso, qtd in dados %}
+        <tr>
+            <td>{{ curso }}</td>
+            <td>{{ qtd }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <button onclick="window.location.href='{{ url_for('estudantes') }}'">Cadastrar mais</button>
+    <button onclick="window.location.href='{{ url_for('home') }}'">Voltar</button>
+</div>
+</body>
+</html>
